@@ -25,6 +25,7 @@ skills/<skill-name>/
 docs/                      Standards, architecture, security, and promotion
 templates/                 Skill and evaluation starters
 scripts/                   Repository validation
+tests/                     Synthetic MCP contract tests
 ```
 
 ## Development Workflow
@@ -41,9 +42,10 @@ scripts/                   Repository validation
 ## Current Status
 
 The development factory is initialized. No skill is production-approved yet.
-The first reference implementation will be `bgp-troubleshooting`, initially
-tested against synthetic MCP responses and then an authorized read-only Arista
-EOS target.
+Development pilots for `bgp-troubleshooting` and `arista-eos-health` have
+deterministic synthetic coverage. See
+[the pilot test record](docs/PILOT_NETWORK_SKILLS_V0.1.md). Live-device testing
+requires separate approval.
 
 ## Principles
 

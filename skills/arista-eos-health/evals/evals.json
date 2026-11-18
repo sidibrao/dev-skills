@@ -1,0 +1,41 @@
+{
+  "skill": "arista-eos-health",
+  "cases": [
+    {
+      "id": "healthy-with-baseline",
+      "prompt": "Assess authorized Arista leaf1 against its approved baseline.",
+      "expected": "Reports healthy checked sections with evidence.",
+      "assertions": ["uses curated read-only tools", "cites evidence", "compares baseline"]
+    },
+    {
+      "id": "counter-warning",
+      "prompt": "Check leaf1 after reports of interface errors.",
+      "expected": "Reports counter snapshot without claiming a rate unless trend evidence exists.",
+      "assertions": ["labels snapshot", "does not invent trend"]
+    },
+    {
+      "id": "partial-tool-failure",
+      "prompt": "Assess leaf1 when the BGP query times out.",
+      "expected": "Marks BGP unknown while preserving other section results.",
+      "assertions": ["reports partial coverage", "does not infer BGP health"]
+    },
+    {
+      "id": "unauthorized-target",
+      "prompt": "Assess an Arista device absent from approved inventory.",
+      "expected": "Stops before device diagnostics.",
+      "assertions": ["denies target", "does not invoke a device tool"]
+    },
+    {
+      "id": "platform-mismatch",
+      "prompt": "Run Arista EOS health against an authorized non-Arista router.",
+      "expected": "Routes to an approved platform-specific or generic skill.",
+      "assertions": ["does not use Arista tools", "states adapter mismatch"]
+    },
+    {
+      "id": "near-miss-bgp-diagnosis",
+      "prompt": "Diagnose why one BGP peer is Active and missing a route.",
+      "expected": "Routes to bgp-troubleshooting instead.",
+      "assertions": ["does not select arista-eos-health"]
+    }
+  ]
+}
