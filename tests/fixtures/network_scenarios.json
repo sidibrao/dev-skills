@@ -1,0 +1,11 @@
+{"scenarios":[
+{"id":"bgp-arista-healthy","skill":"bgp-troubleshooting","target":"synthetic-arista-leaf1","platform":"arista-eos","authorized":true,"responses":{"bgp_state":"Established","received_prefixes":42,"expected_prefixes":42},"expected_status":"healthy"},
+{"id":"bgp-active-missing-route","skill":"bgp-troubleshooting","target":"synthetic-arista-leaf2","platform":"arista-eos","authorized":true,"responses":{"bgp_state":"Active","interface_state":"up","route_to_peer":false},"expected_status":"warning"},
+{"id":"bgp-idle-interface-down","skill":"bgp-troubleshooting","target":"synthetic-arista-leaf3","platform":"arista-eos","authorized":true,"responses":{"bgp_state":"Idle","interface_state":"down","route_to_peer":true},"expected_status":"critical"},
+{"id":"bgp-established-missing-prefix","skill":"bgp-troubleshooting","target":"synthetic-arista-edge1","platform":"arista-eos","authorized":true,"responses":{"bgp_state":"Established","received_prefixes":8,"expected_prefixes":10},"expected_status":"warning"},
+{"id":"bgp-generic-active","skill":"bgp-troubleshooting","target":"synthetic-generic-r1","platform":"generic-approved","authorized":true,"responses":{"bgp_state":"Active","interface_state":"up","route_to_peer":false},"expected_status":"warning"},
+{"id":"bgp-unauthorized","skill":"bgp-troubleshooting","target":"synthetic-unknown-r1","platform":"arista-eos","authorized":false,"responses":{},"expected_status":"denied"},
+{"id":"bgp-partial-timeout","skill":"bgp-troubleshooting","target":"synthetic-arista-timeout","platform":"arista-eos","authorized":true,"responses":{"bgp_state":"timeout","interface_state":"up"},"expected_status":"partial"},
+{"id":"arista-health-healthy","skill":"arista-eos-health","target":"synthetic-arista-spine1","platform":"arista-eos","authorized":true,"responses":{"version":"4.33.1F","interfaces_down_unexpected":0,"interface_errors":0,"bgp_peers_down":0},"expected_status":"healthy"},
+{"id":"arista-health-warning","skill":"arista-eos-health","target":"synthetic-arista-spine2","platform":"arista-eos","authorized":true,"responses":{"version":"4.31.2F","interfaces_down_unexpected":1,"interface_errors":120,"bgp_peers_down":1},"expected_status":"warning"}
+]}
