@@ -1,22 +1,58 @@
-# dev-skills
+# YoToConn Development Skills
 
-# Dev Agent Skills
-
-This repository contains approved, tested, and version-controlled AI agent skills for the YoToConn platform.
+`dev-skills` is the development and evaluation workspace for YoToConn Agent
+Skills. Content in this repository is **not production-approved**.
 
 ## Purpose
-- Store approved SKILL.md files and supporting resources.
-- Provide a trusted source for authorized YoToConn agents.
-- Maintain skill versions, test evidence, and approval records.
 
-## Security
-- All skills must be tested and reviewed before promotion.
-- No secrets, credentials, customer data, or unrestricted commands.
-- A skill does not grant access to tools or infrastructure.
-- Execution permissions are enforced independently by YoToConn.
+- Draft and improve reusable skills for IT operations, networking, business,
+  marketing, support, and platform administration.
+- Keep deterministic helpers, references, fixtures, and behavioral evaluations
+  beside each skill.
+- Prove selection accuracy, output quality, safety, and tool boundaries before
+  promotion.
+- Submit approved releases to [`sidibrao/ag-skills`](https://github.com/sidibrao/ag-skills).
 
-## Workflow
-Development takes place in sidibrao/dev-skills. Approved versions are promoted here after testing, security review, and human approval.
+## Repository Layout
 
-## Status
-Repository initialization. No production-approved skills have been released.
+```text
+skills/<skill-name>/
+  SKILL.md                 Required portable entrypoint
+  scripts/                 Optional deterministic helpers
+  references/              Optional detail loaded only when needed
+  assets/                  Optional output templates and static resources
+  evals/evals.json         Required YoToConn behavioral evaluations
+docs/                      Standards, architecture, security, and promotion
+templates/                 Skill and evaluation starters
+scripts/                   Repository validation
+```
+
+## Development Workflow
+
+1. Create a branch from `main`.
+2. Define the job, trigger boundary, inputs, evidence, tools, risk, and expected output.
+3. Add the skill under `skills/<name>/` using the template.
+4. Add realistic positive, negative, failure, and authorization evaluations.
+5. Run `python3 scripts/validate_skills.py`.
+6. Test against synthetic or explicitly authorized targets.
+7. Open a pull request and attach test evidence.
+8. Promote the reviewed commit using [docs/PROMOTION.md](docs/PROMOTION.md).
+
+## Current Status
+
+The development factory is initialized. No skill is production-approved yet.
+The first reference implementation will be `bgp-troubleshooting`, initially
+tested against synthetic MCP responses and then an authorized read-only Arista
+EOS target.
+
+## Principles
+
+- One coherent, repeatable job per skill.
+- Skills describe procedure; MCP servers provide capabilities.
+- Read-only network observation is the default.
+- A skill never grants infrastructure access or contains credentials.
+- Evidence beats confident language.
+- Every failure becomes a focused regression evaluation.
+- Keep `SKILL.md` concise and load detailed references progressively.
+
+See [docs/SKILLS_STANDARD.md](docs/SKILLS_STANDARD.md) for normative rules.
